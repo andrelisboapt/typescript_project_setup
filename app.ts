@@ -1,16 +1,24 @@
-function combine(input1: number | string, input2: number | string) { //this is a union types, which means that those inputs can be numbers or strings, so its more flexible and accurate
+function combine(input1: number | string, input2: number | string, resultConversion: 'as-number' | 'as-text') { //this is a union types, which means that those inputs can be numbers or strings, so its more flexible and accurate
     let result;
-    if(typeof input1 === 'number' && typeof input2 === 'number'){
-        result = input1 + input2; 
+    if(typeof input1 === 'number' && typeof input2 === 'number' || resultConversion === 'as-number'){
+        result = +input1 + +input2; //forcing conversion to number
     } else {
         result = input1.toString() + input2.toString();
     }
+    /* if (resultConversion === 'as-number'){
+        return +result; //here we are forcing the conversion to number
+    } else {
+        return result.toString(); //forcing result to string
+
+    } */
     
-    return result;
 }
 
-const combinedAges = combine(30, 26);
+const combinedAges = combine(30, 26, 'as-number');
 console.log(combinedAges);
 
-const combinedNames = combine('Max', 'Anna');
+const combinedStringAges = combine('30', '26', 'as-number');
+console.log(combinedStringAges);
+
+const combinedNames = combine('Max', 'Anna', 'as-text');
 console.log(combinedNames);
