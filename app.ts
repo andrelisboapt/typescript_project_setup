@@ -1,29 +1,13 @@
-/* function combine(input1: number | string, input2: number | string, resultConversion: 'as-number' | 'as-text') { //this is a union types, which means that those inputs can be numbers or strings, so its more flexible and accurate */
-    
-    type Combinable = number | string // this is a type aliases (custom type), a reusable type, "Comninable" can be any name
-    type ConversionDescriptor = 'as-number' | 'as-text'
-    
-function combine(input1: Combinable, input2: Combinable, resultConversion: ConversionDescriptor){
-    let result;
-    if(typeof input1 === 'number' && typeof input2 === 'number' || resultConversion === 'as-number'){
-        result = +input1 + +input2; //forcing conversion to number
-    } else {
-        result = input1.toString() + input2.toString();
-    }
-    /* if (resultConversion === 'as-number'){
-        return +result; //here we are forcing the conversion to number
-    } else {
-        return result.toString(); //forcing result to string
+function add(n1: number, n2: number){
+    return n1 + n2;
+}
 
-    } */
+function printResult(num: number){ //we can see this function is a "void" type, which means that it isn't returning anything
+    console.log('Result: ' + num);
     
 }
 
-const combinedAges = combine(30, 26, 'as-number');
-console.log(combinedAges);
+printResult(add(5, 12));
 
-const combinedStringAges = combine('30', '26', 'as-number');
-console.log(combinedStringAges);
 
-const combinedNames = combine('Max', 'Anna', 'as-text');
-console.log(combinedNames);
+// let someValue: undefined; // here we see that in typescript we can also define a variable as a undefined however that's probably useless
