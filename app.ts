@@ -1,4 +1,9 @@
-function combine(input1: number | string, input2: number | string, resultConversion: 'as-number' | 'as-text') { //this is a union types, which means that those inputs can be numbers or strings, so its more flexible and accurate
+/* function combine(input1: number | string, input2: number | string, resultConversion: 'as-number' | 'as-text') { //this is a union types, which means that those inputs can be numbers or strings, so its more flexible and accurate */
+    
+    type Combinable = number | string // this is a type aliases (custom type), a reusable type, "Comninable" can be any name
+    type ConversionDescriptor = 'as-number' | 'as-text'
+    
+function combine(input1: Combinable, input2: Combinable, resultConversion: ConversionDescriptor){
     let result;
     if(typeof input1 === 'number' && typeof input2 === 'number' || resultConversion === 'as-number'){
         result = +input1 + +input2; //forcing conversion to number
