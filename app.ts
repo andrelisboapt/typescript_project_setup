@@ -7,6 +7,12 @@ function printResult(num: number){ //we can see this function is a "void" type, 
     
 }
 
+
+function addAndHandle(n1: number, n2: number, callback: (num: number) => void){ //since we define the type for the callback, when we call the function we don't need to define again
+    const result = n1 + n2;
+    callback(result);
+}
+
 printResult(add(5, 12));
 
 //let combineValues: Function //Function is also a variable type
@@ -19,3 +25,9 @@ combineValues = add;
 console.log(combineValues(8, 8))
 
 // let someValue: undefined; // here we see that in typescript we can also define a variable as a undefined however that's probably useless
+
+
+addAndHandle(10, 20, (result) => { //we already declare the type for this argument from the callback
+    console.log(result) //Here we display the result from addAndHandle through the callback function
+    //return result //we defined the callback as a void, however here we are dealing with the argument from the callback so we can return something
+})
